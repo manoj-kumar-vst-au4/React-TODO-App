@@ -40,10 +40,14 @@ class App extends React.Component{
         <div className="container">
         <button className="btn btn-white mt-2 border border-success" onClick={() => this.getUserData(this.state.input)}>Add to list</button>
         </div>
-        <List
-          items ={this.state.list}
-          deleteItem ={(index)=> this.delete(index)}
-        />
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <List
+              items ={this.state.list}
+              deleteItem ={(index)=> this.delete(index)}
+            />
+          </div>
+        </div>
         
       </div>
     );

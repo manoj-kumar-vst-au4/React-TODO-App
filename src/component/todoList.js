@@ -10,7 +10,7 @@ import React from "react";
                     { this.props.items.map((item, index) => {
                     return (
                             <div  >
-                                <div className="card" style={{"width":"30%"}}>
+                                <div className="card">
                                     <div className="card-body py-1 rounded-lg shadow" >
                                     <p className="b3">{item}</p>
                                     </div>
