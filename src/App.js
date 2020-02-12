@@ -13,47 +13,71 @@ class App extends React.Component{
     users.push(user);
     this.setState({
       list: users,
-      input:""
+      input:"",
+      isEdit: false
     });
   }
 
   getUserData = (input)=> {
-    this.addTodoDataToList(input);
-    this.setState({
-      input:""
-    });
-    
+    this.addTodoDataToList(input)
   }
 
   delete = (key) => {
     const filteredItems = this.state.list.filter((item, index) => {
       return index !== key
     })
+
+    
     this.setState({
       list: filteredItems,
     })
   }
 
+  editItem = (key) =>{
+    const filteredItems = this.state.list.filter((item, index) => {
+      return index !== key
+    })
+
+    const selectedItem = this.state.list.find(item => this.state.list.indexOf(item) === key);
+
+    this.setState({
+      list: filteredItems,
+      input: selectedItem,
+      isEdit: true
+    })
+  }
+
+
+  clearList =()=>{
+    this.setState({
+      list:[]
+    })
+  }
+
   render(){
     return (
-      <div className="container mt-4">
+      <div className="container-fluid mt-4 ">
+        <h1 className="text-center mb-5 bg-">TODO-APP</h1>
         < UserInput
-        input={this.state.input}
-         userInput={(input) => this.setState({input:input})}
-           getUserData ={(user)=>this.addTodoDataToList(user)}
+          input={this.state.input}
+          userInput={(input) => this.setState({input:input})}
+          getUserData ={(user)=>this.addTodoDataToList(user)}
         />
-        <div className="container">
-        <button className="btn btn-primary mt-2 border border-dark" onClick={() => this.getUserData(this.state.input)}>Add to list</button>
-        </div>
-        <div className="row">
-          <div className="col-md-6 offset-md-3">
-            <List
-              items ={this.state.list}
-              deleteItem ={(index)=> this.delete(index)}
-            />
-          </div>
-        </div>
+        <div className="container text-center">
         
+    <button className={!this.state.isEdit?"btn btn-primary mt-2 border border-dark":"btn btn-success mt-2 border border-dark"} onClick={() => this.getUserData(this.state.input)}>{!this.state.isEdit?"Add Item":"Edit Item"}</button>
+            </div>
+              <div className="row">
+                <div className="col-md-4 offset-md-4">
+                  <List
+                    items ={this.state.list}
+                    deleteItem ={(index)=> this.delete(index)}
+                    clearList={this.clearList}
+                    editItem ={this.editItem}
+                    
+                  />
+                </div>
+              </div>
       </div>
     );
   }
