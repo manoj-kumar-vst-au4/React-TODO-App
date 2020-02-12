@@ -18,7 +18,11 @@ class App extends React.Component{
   }
 
   getUserData = (input)=> {
-    this.addTodoDataToList(input)
+    this.addTodoDataToList(input);
+    this.setState({
+      input:""
+    });
+    
   }
 
   delete = (key) => {
@@ -34,14 +38,15 @@ class App extends React.Component{
     return (
       <div className="container mt-4">
         < UserInput
+        input={this.state.input}
          userInput={(input) => this.setState({input:input})}
            getUserData ={(user)=>this.addTodoDataToList(user)}
         />
         <div className="container">
-        <button className="btn btn-white mt-2 border border-success" onClick={() => this.getUserData(this.state.input)}>Add to list</button>
+        <button className="btn btn-primary mt-2 border border-dark" onClick={() => this.getUserData(this.state.input)}>Add to list</button>
         </div>
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
+        <div className="row">
+          <div className="col-md-6 offset-md-3">
             <List
               items ={this.state.list}
               deleteItem ={(index)=> this.delete(index)}
