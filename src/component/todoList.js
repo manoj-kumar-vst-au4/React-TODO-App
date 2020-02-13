@@ -13,7 +13,7 @@ import React from "react";
                             
                                 <div className="card mt-2 border-dark mx-auto mb-2">
                                     <div className="card-body py-1 rounded-lg shadow d-flex bd-highlight" >
-                                    <li className="b3 flex-grow-1 bd-highlight"><h5 className="pt-1" key={index}>{item}</h5></li>
+                                    <li className="b3 flex-grow-1 bd-highlight"><p className="pt-2" key={index}>{item}</p></li>
                                     <button className="btn btn-success border border-dark my-1 bd-highlight" onClick={() => this.props.editItem(index)}>Edit</button>
                                 <button className="btn btn-danger ml-2 border border-dark my-1 bd-highlight" onClick={()=>this.props.deleteItem(index) }>Delete</button>
                                     </div>
