@@ -8,4 +8,4 @@
 4. Edit the TODO. 
 5. Delete the TODO.
 
-LIVE: [React TODO App](https://manoj-kumar-shoppingcart.netlify.com/)
+LIVE: [React TODO App](https://manoj-react-todoapp.netlify.com/)
